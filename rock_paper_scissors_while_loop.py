@@ -8,6 +8,9 @@ while True:
     user_input = input("Enter a choice (rock, paper, scissors): ")
     possible_action = ["rock", "paper", "scissors"]
     computer_actions = random.choice(possible_action)
+    if user_input.lower() == "quit":
+        print("Thank you for playing.")
+        exit()
     if user_input.lower() not in possible_action:
         print("Invalid action")
         continue
@@ -40,7 +43,7 @@ while True:
     elif user_input.lower() == computer_actions:
         user_score += 0
         computer_score += 0
-        print("No points added, please keep playing.")
+        # print("No points added, please keep playing.")
     else:
         computer_score += 1
     # FINAL SCORE CALCULATIONS
@@ -56,4 +59,10 @@ while True:
 
     play_again = input("Play again? (Yes/No): ")
     if play_again.lower() != "yes":
+        if user_score > computer_score:
+            print(f"Thank you for playing. Final score is {user_score} point/s vs {computer_score} point/s. You win!")
+        elif user_score == computer_score:
+            print(f"Thank you for playing. Final score is {user_score} point/s vs {computer_score} point/s. It's a tie!")
+        else:
+            print(f"Thank you for playing. Final score is {user_score} point/s vs {computer_score} point/s. Computer win!")
         break
